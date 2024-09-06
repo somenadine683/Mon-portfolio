@@ -18,4 +18,22 @@ export default defineConfig({
             partialDirectory: resolve(__dirname, "src/partials"),
         }),
     ],
+    build: {
+        rollupOptions: {
+            input: {
+                main: resolve(new URL("index.html", import.meta.url).pathname),
+            },
+            output: {
+                assetFileNames: ({ name }) => {
+                    if (/\.(png|jpg|jpeg|svg)$/.test(name ?? "")) {
+                        return "assets/[name]-[hash][extname]";
+                    }
+                    if (/\.js$/.test(name ?? "")) {
+                        return "assets/js/[name]-[hash].js";
+                    }
+                    return "assets/[name]-[hash][extname]";
+                },
+            },
+        },
+    },
 });
