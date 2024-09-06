@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> head}}
+    {{> css-import}}
+  </head>
+  <body>
+
+    <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+    {{> header}}
+    {{> hero-section}}
+    <main id="main">
+        {{> about}}
+        {{> facts}}
+        {{> skills}}
+        {{> resume}}
+        {{> portfolio}}
+        {{> services}}
+        {{> contact}}
+    </main>
+    <!-- <div id="root"></div> -->
+    {{> footer}}
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <script type="module" src="/src/main.jsx"></script>
+    {{> js-import}}
+  </body>
+</html>
