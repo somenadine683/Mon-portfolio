@@ -37,7 +37,7 @@
         //
         (function(){
             emailjs.init({
-                publicKey: "",
+                publicKey: "0jyu_9r701CRTH0BW",
             });
         })();
 
@@ -49,7 +49,7 @@
                 message: document.getElementById('message').value,
                 to_name: 'Nadine',
             };
-            emailjs.send('service_id', 'template_id', params)
+            emailjs.send('service_5fvq9eq', 'template_o12d457', params)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     toasts.push({
