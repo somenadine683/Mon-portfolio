@@ -27,6 +27,64 @@
         document.getElementById('cv-download').addEventListener('click', () => {
             window.open('/public/NADINE.pdf', '_blank');
         });
+        const toasts = new Toasts();
+        // toasts.push({
+        //     title: 'My Toast Notification Title',
+        //     content: 'My toast notification description.',
+        //     style: 'success'
+        // });
+
+        //
+        (function(){
+            emailjs.init({
+                publicKey: "",
+            });
+        })();
+
+        function sendEmail() {
+            let params = {
+                from_name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                to_name: 'Nadine',
+            };
+            emailjs.send('service_id', 'template_id', params)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    toasts.push({
+                        title: 'Email envoyé',
+                        content: 'Merci pour votre message. Je vous répondrai dans les plus brefs délais.',
+                        style: 'success'
+                    });
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    toasts.push({
+                        title: 'Echec',
+                        content: 'Votre email n\'a pas été envoyé. Veuillez réessayer plus tard.',
+                        style: 'error'
+                    });
+                });
+        };
+
+        (function () {
+
+            "use strict";
+
+            let forms = document.querySelectorAll('.php-email-form');
+            forms.forEach(function(e) {
+                e.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    sendEmail();
+                    // reset form
+                    e.reset();
+                });
+            });
+        }
+
+    )();
+
+
     </script>
   </body>
 </html>
